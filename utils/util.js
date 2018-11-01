@@ -63,11 +63,12 @@ const modal = (title, content, showCancel, callBack) => {
 
 
 //自定义加载
-const toast = (title) => {
+const toast = (title,data) => {
   wx.showToast({
     title,
     icon: 'none',
-    mask: true
+    mask: true,
+    duration: data?data:2000
   })
 }
 
@@ -87,6 +88,14 @@ const showModal = (res, title = '提示', showCancel = false) => {
     showCancel,
   })
 }
+const isPoneAvailable = (str) =>{
+  let myreg=/^[1][3,4,5,6,7,8][0-9]{9}$/;
+  if (!myreg.test(str)) {
+      return false;
+  } else {
+      return true;
+  }
+}
 module.exports = {
-  formatTime,showModal,showLoading,toast,modal,hideLoading,loading,wxApiCanUse,back
+  formatTime,showModal,showLoading,toast,modal,hideLoading,loading,wxApiCanUse,back,isPoneAvailable
 }

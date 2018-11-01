@@ -44,27 +44,15 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     if (!that.data.counting) {
       if (!myreg.test(phoneNum)) {
-        wx.showToast({
-          title: '请填写正确手机号',
-          icon: 'none',
-          duration: 500
-        })
+        utils.toast('请输入正确的手机号！');
       } else {
         app.api.GET(data, config.Getlogincode).then(res => {
           if (res.result == 3 && res.result_text == 'success') {
-            wx.showToast({
-              title: '验证码发送成功！',
-              icon: 'success',
-              duration: 2000
-            });
+            utils.toast('验证码发送成功！',2000);
             //开始倒计时60秒
             that.countDown(that, 60);
           } else {
-            wx.showToast({
-              title: res.result_text,
-              icon: 'none',
-              duration: 500
-            })
+            utils.toast(res.result_text,2000);
           }
         }).catch(v => {
           console.warn(v);
@@ -72,11 +60,7 @@ Page({
 
       }
     } else {
-      wx.showToast({
-        title: that.data.timeCountDownTop,
-        icon: 'none',
-        duration: 2000
-      });
+      utils.toast(that.data.timeCountDownTop,2000);
     }
   },
   logIn() {
@@ -100,11 +84,7 @@ Page({
             url: '/pages/index/index'
           })
         }else{
-          wx.showToast({
-            title: res.result_text,
-            icon: 'none',
-            duration: 500
-          });
+          utils.toast(res.result_text,2000);
         }
       }).catch(v => {
         console.warn(v);

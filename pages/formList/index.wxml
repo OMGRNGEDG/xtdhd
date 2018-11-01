@@ -1,75 +1,78 @@
 <!-- pages/formList/index.wxml -->
-<view class="page">
-    <form bindsubmit="formSubmit" bindreset="formReset">
-        <view class="">
-            <view class="section__title">
-                项目名称
-                <text class="required">*</text>
+<view class="">
+    <view class="page">
+        <form bindsubmit="formSubmit" bindreset="formReset">
+            <view class="">
+                <view class="section__title">
+                    项目名称
+                    <text class="required">*</text>
+                </view>
+                <view class="">
+                    <input class="weuinput pageInput" disabled value="{{shopName}}" />
+                </view>
             </view>
             <view class="">
-                <input class="weui-input" disabled value="{{shopName}}" />
-            </view>
-        </view>
-        <view class="">
-            <view class="section__title">
-                姓名
-                <text class="required">*</text>
-            </view>
-            <view class="">
-                <input class="weui-input" name="name" disabled placeholder="姓名" />
-            </view>
-        </view>
-        <view class="">
-            <view class="section__title">
-                手机号
-                <text class="required">*</text>
+                <view class="section__title">
+                    姓名
+                    <text class="required">*</text>
+                </view>
+                <view class="">
+                    <input class="pageInput" name="name" placeholder="姓名" />
+                </view>
             </view>
             <view class="">
-                <input class="weui-input" name="phone" disabled placeholder="手机号" />
-            </view>
-        </view>
-        <view class="weui-cell weui-cell_input weui-cell_vcode">
-            <view class="">
-                <input class="weui-input" name="cumcode" placeholder="验证码" />
-            </view>
-            <view class="weui-cell__ft">
-                <view class="weui-vcode-btn">获取验证码</view>
-            </view>
-        </view>
-        <view class="">
-            <view class="section__title">
-                邮箱
-                <text class="required">*</text>
+                <view class="section__title">
+                    手机号
+                    <text class="required">*</text>
+                </view>
+                <view class="">
+                    <input bindinput="changePhone" class="pageInput" value="{{userPhone}}" type='number' name="phone" placeholder="手机号" />
+                </view>
             </view>
             <view class="">
-                <input name="mailbox" class="weui-input" disabled value="{{em}}" placeholder="邮箱" />
-            </view>
-        </view>
-        <view class="">
-            <view class="section__title">
-                众筹类型
-                <text class="required">*</text>
-            </view>
-            <view class="">
-                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                    <view class="weui-select weui-select_in-select-after">
-                        {{countries[countryIndex]}}
-                    </view>
-                </picker>
-            </view>
-        </view>
-        <view class="">
-            <view class="section__title">
-                预约股数
-                <text class="required">*</text>
+                <view class="section__title">
+                    验证码
+                    <text class="required">*</text>
+                </view>
+                <view class="clearfix">
+                    <input class="pageInput fl" name="cumcode" placeholder="验证码" />
+                    <view class="fr" catchtap="getCode" hover-class="btn_hover">获取验证码</view>
+                </view>
             </view>
             <view class="">
-                <input name="cfnumber" class="weui-input" disabled value="{{em}}" placeholder="手机号" />
+                <view class="section__title">
+                    邮箱
+                    <text class="required">*</text>
+                </view>
+                <view class="">
+                    <input name="email" class="pageInput" placeholder="邮箱" />
+                </view>
             </view>
-        </view>
-        <view class="btn-area">
-            <button formType="submit">提交</button>
-            <button formType="reset">Reset</button>
-        </view>
-    </form>
+            <view class="">
+                <view class="section__title">
+                    众筹类型
+                    <text class="required">*</text>
+                </view>
+                <view class="">
+                    <input name="countryIndex" value="{{countryIndex}}" style="display:none;" class="" placeholder="邮箱" />
+                    <picker bindchange="bindCountryChange" range="{{countries}}">
+                        <view class="weui-select">{{countryIndex}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="">
+                <view class="section__title">
+                    预约股数
+                    <text class="required">*</text>
+                </view>
+                <view class="">
+                    <input name="cfnumber" type='number' class="pageInput" placeholder="预约股数" />
+                </view>
+            </view>
+            <view class="btn-area">
+                <button hover-class="btn_hover" formType="submit" class='sumBtn'>提交</button>
+            </view>
+        </form>
+    </view>
+    <view class="copyright">2016 © 尖微空间</view>
 </view>
