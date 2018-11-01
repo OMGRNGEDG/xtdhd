@@ -1,0 +1,75 @@
+<!-- pages/formList/index.wxml -->
+<view class="page">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="">
+            <view class="section__title">
+                项目名称
+                <text class="required">*</text>
+            </view>
+            <view class="">
+                <input class="weui-input" disabled value="{{shopName}}" />
+            </view>
+        </view>
+        <view class="">
+            <view class="section__title">
+                姓名
+                <text class="required">*</text>
+            </view>
+            <view class="">
+                <input class="weui-input" name="name" disabled placeholder="姓名" />
+            </view>
+        </view>
+        <view class="">
+            <view class="section__title">
+                手机号
+                <text class="required">*</text>
+            </view>
+            <view class="">
+                <input class="weui-input" name="phone" disabled placeholder="手机号" />
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="">
+                <input class="weui-input" name="cumcode" placeholder="验证码" />
+            </view>
+            <view class="weui-cell__ft">
+                <view class="weui-vcode-btn">获取验证码</view>
+            </view>
+        </view>
+        <view class="">
+            <view class="section__title">
+                邮箱
+                <text class="required">*</text>
+            </view>
+            <view class="">
+                <input name="mailbox" class="weui-input" disabled value="{{em}}" placeholder="邮箱" />
+            </view>
+        </view>
+        <view class="">
+            <view class="section__title">
+                众筹类型
+                <text class="required">*</text>
+            </view>
+            <view class="">
+                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">
+                        {{countries[countryIndex]}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="">
+            <view class="section__title">
+                预约股数
+                <text class="required">*</text>
+            </view>
+            <view class="">
+                <input name="cfnumber" class="weui-input" disabled value="{{em}}" placeholder="手机号" />
+            </view>
+        </view>
+        <view class="btn-area">
+            <button formType="submit">提交</button>
+            <button formType="reset">Reset</button>
+        </view>
+    </form>
+</view>

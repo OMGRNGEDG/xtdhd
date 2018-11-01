@@ -1,0 +1,7 @@
+{
+    "onReachBottomDistance": "10px",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ee8742",
+    "navigationBarTitleText": "项目列表",
+    "navigationBarTextStyle": "white"
+}

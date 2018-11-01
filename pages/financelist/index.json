@@ -1,0 +1,10 @@
+{
+  "onReachBottomDistance": "10px",
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ee8742",
+  "navigationBarTitleText": "财务报表",
+  "navigationBarTextStyle": "white"
+}

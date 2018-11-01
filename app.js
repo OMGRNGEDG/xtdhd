@@ -1,4 +1,6 @@
 //app.js
+import api from './api/fetch.js'
+import path from './api/config.js'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -6,7 +8,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res.code)
+     
       }
     })
     // 获取用户信息
@@ -32,5 +34,7 @@ App({
   },
   globalData: {
     userInfo: 'b'
-  }
+  },
+  api: api,
+  path: path
 })

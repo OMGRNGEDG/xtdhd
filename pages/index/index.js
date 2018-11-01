@@ -1,62 +1,135 @@
 //index.js
 //获取应用实例
-var config = require('../../api/index.js');
-const app = getApp()
-
+const config = require('../../api/index.js');
+const app = getApp();
 Page({
   data: {
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    activeList: [],
+    userInfo: {},
+    showCOn: false,
+    inputTxt: null,
+    marginTop: "-140"
   },
   onLoad: function () {
-    console.log(app.globalData.userInfo);
-    wx.request({
-      url: config.Expense,
-      method: 'GET',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWI0MWNlN2QtZmYwNS00MGI4LTgxYjctYmQ1MjhjNjg2MDZkIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbW9iaWxlcGhvbmUiOiIxNTIxNjcyODIwOSIsIm5iZiI6IjE1Mzk1MDQ5ODEiLCJleHAiOiIxNTM5NTkxMzgxIn0.1vi4LKXC7Gd6E1yhed5LPhllDNzIosu90eVYD_MMwHk'
-      },
-      success: function (dt) {
-        console.log(dt.data)
-        /*
-        var newitem = {
-            id: item.id,
-            src: item.mediaConverUrl
-        }*/
-        // that.setData({
-        //   imgUrls: arr,
-        //   voucher: _nam,
-        //   fiexJpg: old
-        // })
+    this.getUserInfo();
+    // app.api.GET(data,config.Expense).then(res=>{
 
-      },
-      fail: function (err) {
-        wx.hideNavigationBarLoading();
-        wx.showModal({
-          title: '提示',
-          content: '请求数据失败',
-          confirmText: '重新获取',
-          cancelText: '稍后再试',
-          success: function (res) {
-            if (res.cancel) {
-              wx.navigateBack({
-                delta: 1
-              });
-            } else {
-              that.requestBanner(sessionId);
-            }
-
+    // });
+  },
+  getUserInfo: function () {
+    const that = this;
+    try {
+      var value = wx.getStorageSync('TOKEN')
+      if (value) {
+        let _data = {}
+        // Do something with return value
+        app.api.GET(_data, config.Info).then(res => {
+          if (res.result == 3 && res.result_text == "success") {
+            wx.setStorage({
+              key: "USER",
+              data: res.data,
+              success: function () {
+                that.getProjects(res.data)
+              }
+            })
           }
+        }).catch(v => {
+          console.warn(v);
+        });
+      } else {
+        wx.reLaunch({
+          url: '/pages/login/index'
+        })
+        console.warn('没有Tocken');
+      }
+    } catch (e) {
+      // Do something when catch error
+      console.log(e)
+    }
+    // this.setData({
+    //   userInfo: e.detail.userInfo,
+    //   hasUserInfo: true
+    // })
+  },
+  getProjects(msg) {
+    let _data = {};
+    app.api.GET(_data, config.Projects).then(res => {
+      if (res.data.length > 0 && res.result == 3) {
+        // 这个接口返回值有问题
+        this.setData({
+          activeList: res.data,
+          userInfo: msg
         });
       }
+    }).catch(v => {
+      console.warn(v);
     });
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  allMonery() {
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      inputTxt: this.data.userInfo.grandtotalmoney
+    })
+  },
+  changeMonery(e){
+    this.setData({
+      inputTxt: e.detail.value
+    })
+  },
+  withdrawal(){
+    const that = this ;
+    let _data = that.data.inputTxt,_msg = that.data.userInfo.grandtotalmoney
+    if(parseInt(_data)>parseInt(_msg)){
+      wx.showToast({
+        title: "超出可提现余额！",
+        icon: 'none',
+        duration: 500
+      });
+    }else{
+      let moner={
+        money: _data
+      };
+      let contenttype = "application/json-patch+json";
+      app.api.POST(moner,config.User+'withdrawal',contenttype).then(res => {
+        this.setData({
+          showCOn: false,
+          marginTop: '-140'
+        });
+        if(res.result_text == "success"&& res.result==3){
+          wx.showToast({
+            title: '已提交！',
+            icon: 'none',
+            duration: 1000
+          });
+        }else{
+          wx.showToast({
+            title: res.result_text,
+            icon: 'none',
+            duration: 1000
+          });
+        }
+        setTimeout(function (){
+          that.getUserInfo();
+         },1100); 
+      }).catch(v => {
+        console.warn(v);
+      });
+    }
+  },
+  putForward() {
+    this.setData({
+      showCOn: true
+    })
+  },
+  bounce(e){
+    console.log(e.detail.height);
+    let msg = -100-e.detail.height;
+    this.setData({
+      marginTop: msg
+    })
+  },
+  cancel() {
+    this.setData({
+      showCOn: false
     })
   }
 })

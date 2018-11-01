@@ -1,4 +1,72 @@
-<!--index.wxml-->
-<view class="container">
-  <view>主页</view>
+<!-- index.wxml -->
+<view class="page">
+    <view class="userInfo" wx:if="{{activeList.length>0}}">
+        <view class='userimg'>
+            <!-- <image style="" mode="aspectFill" src="../../images/jv.jpg"></image> -->
+        </view>
+        <view class="username">{{userInfo.fundname}}</view>
+        <view class="title">可提现余额(元)</view>
+        <view class="titleMonery">{{userInfo.balance}}</view>
+        <view class="titleson">
+            累计分红
+            <text class="">{{userInfo.grandtotalmoney}}</text>
+            元
+        </view>
+    </view>
+    <view class="weui-flex" wx:if="{{userInfo.fundname}}">
+        <navigator class="weui-flex__item1" url="/pages/putForward/index" hover-class="btn_hover">提现</navigator>
+        <navigator url="/pages/fineBalance/index" class="weui-flex__item1" hover-class="btn_hover">
+            余额明细
+        </navigator>
+        <!-- <navigator url="" class="weui-flex__item" hover-class="btn_hover">新项目</navigator> -->
+        <navigator url="/pages/accumulative/index" class="weui-flex__item1" hover-class="btn_hover">
+            全部分红
+        </navigator>
+    </view>
+    <view class="page__bd" wx:if="{{activeList.length>0}}">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <view wx:for="{{activeList}}" wx:key="index" style="margin:10px 0;background-color: #ffffff">
+                    <view class="itemname clearfix">
+                        <image mode="aspectFit" class="" src="../../images/group.png" />
+                        <view class="text_name">{{item.name}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_appmsg">
+                        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                            <image class="weui-media-box__thumb" src="{{item.logo}}" />
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__desc">
+                                门店分红
+                                <text class="redson">{{item.totalfundmoney}}</text>
+                                元
+                            </view>
+                            <view class="weui-media-box__desc">
+                                分红次数
+                                <text class="redson">{{item.totalfundnum}}</text>
+                                次
+                            </view>
+                            <view class="weui-media-box__desc">
+                                <view class="" hover-class="weui-cell_active">查看消费卡金额</view>
+                            </view>
+                            <view class="weui-media-box__desc">
+                                剩余 <text>{{item.cfsurplunum}} 股</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="clearfix weui-flex1">
+                        <navigator url="/pages/bonuslist/index?id={{item.id}}&&projectname={{item.name}}" class="weui-flex__item2">
+                            分红列表
+                        </navigator>
+                        <navigator url="/pages/financelist/index?id={{item.id}}&&projectname={{item.name}}" class="weui-flex__item2">
+                            财务月报表
+                        </navigator>
+                        <navigator url="/pages/storeIncome/index?id={{item.id}}&&projectname={{item.name}}" class="weui-flex__item2" style="margin-right: 0">
+                            门店收益
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>

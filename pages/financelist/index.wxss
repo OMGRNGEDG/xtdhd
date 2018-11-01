@@ -1,0 +1,58 @@
+/* pages/financelist/index.wxss */
+.col-sm-12{
+    position:relative;
+    min-height:1px;
+    padding-bottom:20rpx;
+}
+.portlet-title{
+    border-bottom:1px solid #eee;
+    padding:10rpx 0;
+    margin-bottom:10px;
+    overflow:hidden;
+    text-align: center;
+    font-size:30rpx;
+    background-color: #ee8541;
+    color: #fff;
+}
+.tableTitle{
+    display: flex;
+}
+.weui-flex__item{
+    display:flex;
+justify-content:center;
+align-items:center;
+padding:8px 0;
+background-color:#eb5b36;
+font-size:26rpx;
+color: #fff;
+}
+.blue{
+    color: #428bca;
+}
+.weuigrids{
+    border-left:1rpx solid #d9d9d9;
+    overflow:hidden;
+}
+.vwdataodd{ background-color: #fff; }
+.vwdataeven{ background-color: #f9f9f9; }
+.weui-flex__form {
+    text-align:center;
+    -webkit-flex:1;
+    flex:1;
+    box-sizing:border-box;
+    border-right:1rpx solid #ddd;
+    border-bottom:1rpx solid #ddd;
+    font-size:13px;
+    padding:8px 0;
+    
+    }
+.weui-loadmore,.weui-loadmore{
+    margin: 0 auto;
+}
+.load{
+    width: 100%;
+}
+#mychart-dom-bar canvas{
+    height: 600rpx;
+    width:  100%;
+}

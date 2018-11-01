@@ -1,5 +1,4 @@
-import utils from '../utils/util.js';    
-const APP = getApp();
+import utils from '../utils/util.js'; 
 let requestTaskArray = []; //只允许一次显示加载框
 const fetch = (params = {
   url: '',
@@ -13,8 +12,8 @@ const fetch = (params = {
       data: params.data,
       method: params.method,
       header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': APP.globalData.userInfo
+        'content-type': params.content?params.content:'application/x-www-form-urlencoded',
+        'Authorization': wx.getStorageSync("TOKEN")? "Bearer "+ wx.getStorageSync("TOKEN"):null
       },
       success: res => {
         if (isReturnOk(res)){
@@ -22,7 +21,6 @@ const fetch = (params = {
         } else {
           reject(res.data)
         }
-        
       },
       fail: (res) => {
         utils.showModal('网络异常，请稍后重试~~');
@@ -54,47 +52,55 @@ let showOrHideLoad = (show = true) => {
  * 接口是否返回正常
  */
 const isReturnOk = res => {
-  // console.log('fetch-res:', res)
-  //适配多种接口返回体
   var resCode,resMessage;
   var successCode = 200
-  if(res.data && res.data.result_text) {
+  if(res.data && res.data.result==3 || res != '') {
     resCode = res.data.result_text
-    successCode = '100'
     resMessage = res.data.message
-  }else if(res.statusCode) {
-    resCode = res.statusCode
-    successCode = 200
-    resMessage = res.errMsg
+  }else{
+    utils.showModal('接口异常，请稍后重试~~');
+    return;
   }
-  // if (resCode !== successCode) {
-  //   if(resCode == '6005') {
-  //     resMessage = '该商品已售罄~'
-  //   }
-  //   utils.showModal(resMessage)
-  //   return;
-  // }
   if (typeof res.data == 'undefined' || res.data === null || res.data === '') {
-    utils.showModal(resMessage)
+    if(res.statusCode == 401){
+      // token过期
+      wx.removeStorage({
+        key: 'TOKEN',
+        success (res) {
+          wx.removeStorage({
+            key: 'USER',
+            success (res) {
+              wx.reLaunch({
+                url: '/pages/login/index'
+              });
+            } 
+          })
+        } 
+      })
+     
+      
+    }
+    console.log(res.statusCode)
     return;
   }
-  // if (res.data.msg == '' || res.data.msg == undefined || res.data.msg == null) {
-  //   utils.showModal('接口异常，请稍后重试~~')
-  //   return;
-  // }
-  // if (typeof res.data.data === 'undefined') {
-  //   utils.showModal(res.data.msg)
-  //   return;
-  // }
-  if (res.data.msgCode && res.data.msgCode !== 100) {
-    utils.showModal(res.data.msg)
-    return;
-  }
-
-  // 成功弹窗
-  // utils.showModal(res.data)
   return true
 }
+const POST = (data, url,content) => {
+  return fetch({
+    url,
+    data,
+    content,
+    method: 'POST'
+  })
+}
 
+const GET = (data, url) => {
+  return fetch({
+    url,
+    data
+  })
+}
 
-export default fetch
+export default {
+  POST,GET
+}

@@ -1,0 +1,47 @@
+<!-- pages/projectList/index.wxml -->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-panel">
+            <view class="weui-panel__bd" wx:if="{{msgList.length>0}}">
+                <view class="weui-media-box weui-media-box_text" wx:for="{{msgList}}" wx:key="index">
+                    <view class="itemname clearfix">
+                        <image mode="aspectFit" class="" src="../../images/group.png" />
+                        <view class="text_name">{{item.name}}</view>
+                    </view>
+                    <view class="weui-media-box__desc">
+                        <image class="logo" style="" mode="aspectFit" src="{{item.logo}}" />
+                    </view>
+                    <view class="content">
+                        <view class="shadow">
+                            <view class="topName">{{item.summary}}</view>
+                            <view class="mt">总众筹资金：{{item.cftotalmoney}}元</view>
+                            <view class="mt">每股单价：{{item.cfprice}}元</view>
+                            <view class="mt">股份数量：{{item.cfnumber}}股</view>
+                            <view class="mt">剩余份数：{{item.cfsurplunum}}股</view>
+                            <view class="mt">预定开始时间：{{item.cfbegindate}}</view>
+                            <view class="mt">预定结束时间：{{item.cfenddate}}</view>
+                            <view class="clearfix">
+                                <navigator url="/pages/productDetail/index?id={{item.id}}" class="look" hover-class="btn_hover" data-id="{{item.id}}">
+                                    查看详情
+                                </navigator>
+                                <navigator url="/pages/formList/index?name={{item.name}}" class="sign" hover-class="btn_hover">参与预定</navigator>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="load" wx:if="{{loading}}">
+                <view class="weui-loadmore">
+                    <view class="weui-loading"></view>
+                    <view class="weui-loadmore__tips">正在加载...</view>
+                </view>
+            </view>
+            <view class="load" wx:if="{{showLoad}}">
+                <view class="weui-loadmore">
+                    <view class="weui-loadmore__tips">已加载全部数据</view>
+                </view>
+            </view>
+            <view wx:if="{{msgList==1}}" style="text-align:center;margin:20px 0 0 0;">暂无数据</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,42 @@
+page{
+    background-color: #ffffff;
+}
+.logo{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0;
+}
+.logo image{
+    width: 750rpx;
+    height: 400rpx;
+}
+.content{
+    width: 600rpx;
+    margin: 0 auto;
+    font-size: 30rpx!important;
+    margin-bottom: 0px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNrszTEBACAMA7CCJfxr61SwKzGQ0/bls5sFEolEIpFIJJKMAAMAa/wDYqqLVjAAAAAASUVORK5CYII=) repeat
+}
+.weui-vcode-btn{
+    font-size: 30rpx;
+}
+.content .title{
+    color: #eee;
+    font-size: 40rpx;
+    font-weight: 300;
+    margin-bottom: 50rpx;
+    padding:40rpx 0 0 15px;
+    
+}
+.weui-btn{
+    background-color: #2474f6;
+    color: #ffffff;
+    line-height:2.5;
+}
+.classtitle{
+    color: #999999
+}
+.weui-footer{
+    margin-top: 60rpx;
+}
+.weui-cells::before{bottom:0;border:0}

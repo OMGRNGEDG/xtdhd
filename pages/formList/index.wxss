@@ -1,0 +1,8 @@
+/* pages/formList/index.wxss */
+.page{
+    padding: 15px;
+}
+.required{
+    color: #e02222;
+    padding-left: 2px;
+}

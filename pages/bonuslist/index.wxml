@@ -1,0 +1,84 @@
+<!-- pages/bonuslist/index.wxml -->
+<view class="">
+    <!-- <view class="titleCon clearfix">
+        <view class="visual">
+            <image mode="aspectFit" src="../../images/jv.png" />
+        </view>
+        <view class="details" wx:if="{{showPage}}">
+            <view class="number">
+                <view class="caption">
+                    <image mode="aspectFit" src="../../images/rules.png" />
+                    <text></text>
+                </view>
+                <view class="caption">350.00元</view>
+            </view>
+        </view>
+        <view class="periods" wx:if="{{!showPage}}">20008 期</view>
+        <navigator wx:if="{{showPage}}" url="/pages/accumulative/index" class="more clearfix" hover-class="btn_hover">
+            <view class="" style="float:left">点击此处查看 我的所有分红</view>
+            <image style="" mode="aspectFit" src="../../images/right.png" />
+        </navigator>
+        <view class="more clearfix" wx:if="{{!showPage}}" hover-class="btn_hover">
+            <view class="" style="float:left" bindtap="backList">点击此处返回详情列表</view>
+        </view>
+    </view> -->
+     <view class="userInfo">
+         <view class="username">{{projectname}}</view>
+        <view class="title">上期收益(元)</view>
+        <view class="titleMonery">350.00</view>
+        <navigator wx:if="{{showPage}}" url="/pages/accumulative/index" class="more clearfix" hover-class="btn_hover">
+            <view class="" style="text-align:center">查看所有分红</view>
+        </navigator>
+    </view>
+    <view class="col-sm-12" wx:if="{{showPage}}">
+        
+        <view class="tableCon" wx:if="{{msgList.length>0}}">
+            <view class="tableTitle">
+                <view class="weui-flex__item">
+                    <!-- <image mode="aspectFit" class="" src="../../images/date.png" /> -->
+                    <view class="text">期数</view>
+                </view>
+                <view class="weui-flex__item">
+                    <!-- <image mode="aspectFit" class="" src="../../images/monery.png" /> -->
+                    <view class="text">股数</view>
+                </view>
+                <view class="weui-flex__item">
+                    <!-- <image mode="aspectFit" class="" src="../../images/iconfont-arrowdown.png" /> -->
+                    <view class="text">单股价</view>
+                </view>
+                <view class="weui-flex__item">
+                    <!-- <image mode="aspectFit" class="" src="../../images/style.png" /> -->
+                    <view class="text">总分红</view>
+                </view>
+            </view>
+            <view class="tebleBody">
+                <view class="weuigrids weui-flex {{index%2==0?'vwdataodd':'vwdataeven'}}" wx:for="{{msgList}}" wx:key="index">
+                    <view class="weui-flex__form blue" data-id="{{item.id}}" data-name="{{item.projfundsname}}" bindtap="gotoOnce">
+                        {{item.projfundsname}}
+                    </view>
+                    <view class="weui-flex__form">{{item.cfnumber}}</view>
+                    <view class="weui-flex__form">{{item.fundsprice}}</view>
+                    <view class="weui-flex__form">{{item.totalmoney}}</view>
+                </view>
+            </view>
+        </view>
+        <view wx:else style="font-size:35rpx;text-align:center;">暂无数据</view>
+    </view>
+    <view class="bg" wx:if="{{!showPage}}">
+        <view class="pulse">
+            <view class="shadow">
+                <view class="alert-heading">股东分红</view>
+                <view class="mt">分红期数：{{fundinfo.projfundsname}}</view>
+                <view class="mt">项目名称：{{fundinfo.projectname}}</view>
+                <view class="mt">本期可分红总金额：{{fundinfo.fundtotalmoney}}元</view>
+                <view class="mt">本期预留金额：{{fundinfo.fundoperatemoney}}元</view>
+                <view class="mt">本期实际分红金额 ：{{fundinfo.fundmoney}}元</view>
+                <view class="mt">参与股数:{{fundinfo.cfnumber}}股</view>
+                <view class="mt">每股分红金额：{{fundinfo.fundsprice}}元</view>
+                <view class="mt">本期分红总金额：{{fundinfo.totalmoney}}元</view>
+                <view class="mt">累积分红金额：{{fundinfo.grandtotalmoney}}元</view>
+                <view class="mt">创建时间：{{fundinfo.createdate}}</view>
+            </view>
+        </view>
+    </view>
+</view>

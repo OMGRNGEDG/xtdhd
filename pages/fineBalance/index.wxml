@@ -1,0 +1,54 @@
+<!-- pages/fineBalance/index.wxml -->
+<view class="page">
+    <view class="userInfo" wx:if="{{userInfo}}">
+       <view class="title">可提现余额(元)</view>
+        <view class="titleMonery">{{userInfo.balance}}</view>
+        <view class="titleson">
+            累计分红
+            <text class="">{{userInfo.grandtotalmoney}}</text>
+            元
+        </view>
+    </view>
+    <view class="col-sm-12">
+        <view class="tableCon" wx:if="{{msgList.length>0}}">
+            <view class="tableTitle">
+                <view class="weui-flex__item">
+                    <view class="text">类型</view>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="text">时间</view>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="text">金额</view>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="text">可提现余额</view>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="text">状态</view>
+                </view>
+            </view>
+            <view class="tebleBody">
+                <view hover-class="btn_hover" class="weuigrids weui-flex {{index%2==0?'vwdataodd':'vwdataeven'}}" wx:for="{{msgList}}" wx:key="index">
+                    <view class="weui-flex__form">{{item.moneytype}}</view>
+                    <view class="weui-flex__form">{{item.createdate}}</view>
+                    <view class="weui-flex__form">{{item.money}}</view>
+                    <view class="weui-flex__form">{{item.balance}}</view>
+                    <view class="weui-flex__form">{{item.status}}</view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{msgList===null}}" style="font-size:35rpx;text-align:center;">暂无数据</view>
+        <view class="load" wx:if="{{loading}}">
+            <view class="weui-loadmore">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载...</view>
+            </view>
+        </view>
+        <view class="load" wx:if="{{showLoad}}">
+            <view class="weui-loadmore">
+                <view class="weui-loadmore__tips">已加载全部数据</view>
+            </view>
+        </view>
+    </view>
+</view>

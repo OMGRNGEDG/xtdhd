@@ -1,0 +1,121 @@
+/* pages/fineBalance/index.wxss */
+/* pages/accumulative/index.wxss */
+.top{
+    width: 28%;
+    margin-left: 34%;
+}
+.top image{
+    float: left;
+    width: 40rpx;
+    height: 40rpx;
+}
+.toptext{
+    float: right;
+    font-size: 26rpx;
+}
+.menory{
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color: #e35b5a;
+}
+.col-sm-12{
+    padding-left: 15rpx;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15rpx;
+    padding-bottom: 20px;
+    margin-top: 20rpx; 
+}
+.portlet-title{
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    margin-bottom: 10px;
+    min-height: 41px;
+    overflow: hidden;
+    font-size: 18px;
+}
+.weuigrids{
+    border-left:1rpx solid #d9d9d9;
+    overflow:hidden;
+}
+.tableTitle{
+    display: flex;
+}
+.tixian{
+    text-align: center;
+    font-size: 26rpx;
+    margin-bottom: 20rpx;
+}
+.weui-flex__item{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 8px 0;
+    background-color: #eb5b36;
+
+}
+.weui-flex__item image{
+    width: 20px;
+    height: 20px;
+    margin-right: 5rpx;
+}
+.text{
+    height: 20px;
+    font-size:26rpx;
+    text-align: center;
+    line-height:42rpx;
+    color: #fff;
+}
+.blue{
+    color: #428bca;
+    width: 200rpx;
+    font-size:13px;
+    text-overflow:ellipsis;
+    border-right:1rpx solid #ddd;
+    border-bottom:1rpx solid #ddd;
+}
+.weui-flex{
+    justify-content:center;
+    align-items: center;
+}
+.weui-flex__form{
+    -webkit-box-flex:1;
+    text-align: center;
+    -webkit-flex:1;
+    flex:1;
+    box-sizing:border-box;
+    border-right:1rpx solid #ddd;
+    border-bottom:1rpx solid #ddd;
+    font-size: 24rpx;
+    padding: 8px 0;
+}
+.vwdataodd{ background-color: #fff; }
+.vwdataeven{ background-color: #f9f9f9; }
+.btn_hover{
+    background-color: #f5f5f5;
+}
+.userInfo{
+    background-color: #ee8541;
+    width: 100%;
+    color: #ffffff;
+  }
+  .username{
+    text-align: center;
+    font-size: 30rpx;
+  }
+  .title{
+    text-align: center;
+    padding: 10rpx 0 0 0; 
+    font-size: 20rpx;
+  }
+  .titleMonery{
+    font-size: 40rpx;
+    margin-left: 10rpx;
+    text-align: center;
+  }
+  .titleson{
+    text-align: center;
+    padding: 10rpx 0 15rpx 0; 
+    font-size: 24rpx;
+  }
