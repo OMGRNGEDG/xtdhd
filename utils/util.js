@@ -96,6 +96,14 @@ const isPoneAvailable = (str) =>{
       return true;
   }
 }
+const checkEmail = (str) =>{
+  　var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+  　  if(!reg.test(str)){ //正则验证不通过，格式不对
+  　　　　return false;
+  　　}else{
+  　　　　return true;
+  　　}
+}
 module.exports = {
-  formatTime,showModal,showLoading,toast,modal,hideLoading,loading,wxApiCanUse,back,isPoneAvailable
+  formatTime,showModal,showLoading,toast,modal,hideLoading,loading,wxApiCanUse,back,isPoneAvailable,checkEmail
 }

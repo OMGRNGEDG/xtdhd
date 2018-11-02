@@ -24,7 +24,7 @@
                                 <navigator url="/pages/productDetail/index?id={{item.id}}" class="look" hover-class="btn_hover" data-id="{{item.id}}">
                                     查看详情
                                 </navigator>
-                                <navigator url="/pages/formList/index?name={{item.name}}" class="sign" hover-class="btn_hover">参与预定</navigator>
+                                <navigator url="/pages/formList/index?name={{item.name}}&id={{item.id}}" class="sign" hover-class="btn_hover">参与预定</navigator>
                             </view>
                         </view>
                     </view>

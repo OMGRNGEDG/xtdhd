@@ -8,7 +8,7 @@
                     <text class="required">*</text>
                 </view>
                 <view class="">
-                    <input class="weuinput pageInput" disabled value="{{shopName}}" />
+                    <input class="weuinput pageInput" disabled value="{{constUser.name}}" />
                 </view>
             </view>
             <view class="">

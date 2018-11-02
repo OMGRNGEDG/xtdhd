@@ -1,5 +1,4 @@
 // pages/formList/index.js
-const WeValidator = require('../../utils/validator.js');
 const utils = require('../../utils/util.js');
 const config = require('../../api/index.js');
 const app = getApp()
@@ -9,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shopName: "人民陆地啊还能",
+    constUser: {},
     countryIndex: "",
     countries: ['众筹', '债券'],
     userPhone: null
@@ -20,30 +19,47 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    // this.setData({
-    //   shopName: options.name
-    // })
+    this.setData({
+      constUser: options
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.initValidator()
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let { value } = e.detail;
     let msg =  e.detail.value;
-    debugger
-    if (!this.oValidator.checkData(value)) return
+    if(!msg.name){
+      utils.toast("请填写用户姓名", 2000);
+      return
+    }
+    if(!utils.isPoneAvailable(msg.phone)){
+      utils.toast("请输入正确的手机号！", 2000);
+      return
+    }
+    if(!msg.cumcode){
+      utils.toast("请填写验证码", 2000);
+      return
+    }
+    if(!utils.checkEmail(msg.email)){
+      utils.toast("请填写正确的邮箱账户！", 2000);
+      return
+    }
     if(!this.data.countryIndex){
-      utils.toast("请选择众筹类型", 2000);
+      utils.toast("请选择众筹类型！", 2000);
+      return
+    }
+    if(!msg.cfnumber){
+      utils.toast("请填写预约股数！", 2000);
       return
     }
     let contenttype = "application/json-patch+json";
     let obj ={
-      "projectid": 0,
+      "projectid": this.data.constUser.id,
       "name": msg.name,
       "phone": msg.phone,
       "phonevalidcode": msg.cumcode,
@@ -88,54 +104,7 @@ Page({
       userPhone: e.detail.value
     });
   },
-  initValidator() {
-    // 实例化
-    this.oValidator = new WeValidator({
-      rules: {
-        name: {
-          required: true
-        },
-        phone: {
-          required: true,
-          mobile: true
-        },
-        cumcode: {
-          required: true
-        },
-        email: {
-          required: true,
-          email: true
-        },
-        cfnumber: {
-          required: true
-        },
-        countryIndex: {
-          required: true
-        },
-      },
-      messages: {
-        name: {
-          required: '请输入用户名'
-        },
-        phone: {
-          required: '请输入手机号',
-          mobile: '手机号格式不正确'
-        },
-        cumcode: {
-          required: '请输入验证码'
-        },
-        email: {
-          required: '请输入邮箱'
-        },
-        cfnumber: {
-          required: '请输入预约股数'
-        },
-        countryIndex: {
-          required: '请选择众筹类型'
-        }
-      },
-    })
-  },
+
   /**
    * 生命周期函数--监听页面显示
    */

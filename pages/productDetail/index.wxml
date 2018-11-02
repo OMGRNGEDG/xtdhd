@@ -40,7 +40,7 @@
                         </view>
                     </view>
                 </view>
-                <navigator class="fouding weui-media-box weui-media-box_text" url="/pages/formList/index?name={{msgList.name}}" hover-class="btn_hover">参加预定</navigator>
+                <navigator class="fouding weui-media-box weui-media-box_text" url="/pages/formList/index?name={{msgList.name}}?id={{msgList.id}}" hover-class="btn_hover">参加预定</navigator>
             </view>
         </view>
     </view>
