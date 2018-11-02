@@ -18,6 +18,6 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
-
+api
 # Windows shortcuts
 *.lnk
