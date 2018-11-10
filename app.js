@@ -1,14 +1,30 @@
 //app.js
 import api from './api/fetch.js'
-import path from './api/config.js'
+const config = require('./api/index.js');
 App({
   onLaunch: function () {
-    // 展示本地存储能力
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-     
+        console.log(res.code);
+        api.POST({code:res.code}, config.OnLogin).then(msg => {
+          if (msg) {
+            console.log(msg)
+
+          } else {
+            // wx.showToast({
+            //   title:res.result_text,
+            //   icon: 'none',
+            //   mask: true,
+            //   duration:2000
+            // });
+            // console.warn(res);
+          }
+        }).catch(v => {
+          console.warn(v);
+        });
+
       }
     })
     // 获取用户信息
@@ -23,18 +39,17 @@ App({
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+              // if (this.userInfoReadyCallback) {
+              //   this.userInfoReadyCallback(res)
+              // }
             }
           })
         }
       }
     })
   },
-  globalData: {
-    userInfo: 'b'
-  },
   api: api,
-  path: path
+  globalData:{
+    userInfo:null
+  }
 })

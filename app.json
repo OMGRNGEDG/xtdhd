@@ -1,41 +1,33 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/login/index",
-    "pages/bonuslist/index",
-    "pages/accumulative/index",
-    "pages/financelist/index",
-    "pages/commonList/index",
-    "pages/storeIncome/index",
-    "pages/fineBalance/index",
-    "pages/putForward/index",
-    "pages/projectList/index",
-    "pages/productDetail/index",
-    "pages/formList/index"
+    "pages/my/index",
+    "pages/books/index",
+    "pages/authorize/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "尖微空间",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "参与活动",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#ee8742",
+    "selectedColor": "#b42b2b",
     "borderStyle": "black",
     "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "images/mine_1.png",
-        "selectedIconPath": "images/mine.png",
-        "text": "我的"
+        "iconPath": "/images/active_off.png",
+        "selectedIconPath": "/images/active_on.png",
+        "text": "活动"
       },
       {
-        "pagePath": "pages/projectList/index",
-        "iconPath": "images/home_1.png",
-        "selectedIconPath": "images/home.png",
-        "text": "新项目"
+        "pagePath": "pages/my/index",
+        "iconPath": "/images/my_off.png",
+        "selectedIconPath": "/images/my_on.png",
+        "text": "我的"
       }
     ]
   },

@@ -1,0 +1,15 @@
+<!--pages/books/index.wxml-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1">肖像权授权声明 </view>
+            <view class="weui-article__section">
+                <view class="weui-article__section">
+                    <view class="weui-article__p">
+                       1. 本人在此不可撤销地授权上海九海利盟房地产有限公司及上海兴启房地产有限公司及所属瑞安集团下各关联公司（以下简称“瑞安”）或
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

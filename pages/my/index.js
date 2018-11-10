@@ -1,11 +1,11 @@
-// pages/index/index.js
+// pages/my/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showText: true
+
   },
 
   /**
@@ -28,16 +28,7 @@ Page({
   onShow: function () {
 
   },
-  signName(){
-    this.setData({
-      showText: !this.data.showText
-    });
-  },
-  seeBook(){
-    wx.navigateTo({
-      url: '/pages/books/index'
-    });
-  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

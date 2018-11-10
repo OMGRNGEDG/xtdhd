@@ -1,19 +1,22 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
 	"packOptions": {
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
-	"appid": "wxa57564f32dc4ed0d",
-	"projectname": "Hotel",
+	"libVersion": "2.4.0",
+	"appid": "wxb45a9f34b4a378c6",
+	"projectname": "xtdhd",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -36,10 +39,9 @@
 			"current": 0,
 			"list": [
 				{
-					"id": 0,
-					"name": "1",
-					"pathName": "pages/formList/index",
-					"query": ""
+					"id": -1,
+					"name": "q1",
+					"pathName": "pages/authorize/index"
 				}
 			]
 		}

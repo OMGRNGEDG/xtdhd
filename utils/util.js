@@ -63,12 +63,12 @@ const modal = (title, content, showCancel, callBack) => {
 
 
 //自定义加载
-const toast = (title,data) => {
+const toast = (title, data) => {
   wx.showToast({
     title,
     icon: 'none',
     mask: true,
-    duration: data?data:2000
+    duration: data ? data : 2000
   })
 }
 
@@ -88,22 +88,22 @@ const showModal = (res, title = '提示', showCancel = false) => {
     showCancel,
   })
 }
-const isPoneAvailable = (str) =>{
-  let myreg=/^[1][3,4,5,6,7,8][0-9]{9}$/;
+const isPoneAvailable = (str) => {
+  let myreg = /^[1][3,4,5,6,7,8][0-9]{9}$/;
   if (!myreg.test(str)) {
-      return false;
+    return false;
   } else {
-      return true;
+    return true;
   }
 }
-const checkEmail = (str) =>{
-  　var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
-  　  if(!reg.test(str)){ //正则验证不通过，格式不对
-  　　　　return false;
-  　　}else{
-  　　　　return true;
-  　　}
+
+const setStorage = (key, value) => {
+  return wx.setStorage({
+    key: key,
+    data: value
+  })
 }
+
 module.exports = {
-  formatTime,showModal,showLoading,toast,modal,hideLoading,loading,wxApiCanUse,back,isPoneAvailable,checkEmail
+  formatTime, showModal, showLoading, toast, modal, hideLoading, loading, wxApiCanUse, back, isPoneAvailable, setStorage
 }
