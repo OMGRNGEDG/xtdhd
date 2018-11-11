@@ -1,1 +1,6 @@
 /* pages/my/index.wxss */
+.page{position: relative;}
+.blackBg{position: fixed;left: 0;top: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,0.4);z-index: 2;}
+.fiveMin{width: 640rpx;position: absolute;top: 50%;left: 50%;z-index: 3;height: 800rpx;margin:-400rpx 0 0 -320rpx;}
+.closeBlack{width: 100rpx;height: 100rpx;position: absolute;z-index: 44;top: 0;right:0;z-index: 55;}
+.fiveMin image{width: 100%;position: absolute;left: 0;top: 0;}

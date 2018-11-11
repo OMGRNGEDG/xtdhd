@@ -1,2 +1,11 @@
 <!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<view class="page">
+    <view class="blackBg">
+        <view class="fiveMin">
+            <image src="../../images/fiveMin.png" mode="widthFix" />
+            <view class="closeBlack"></view>
+        </view>
+        
+    </view>
+
+</view>
