@@ -5,5 +5,6 @@
     <image catchtap="signName" class="signLeft" src="/images/right.png" mode="aspectFit" />
     <view catchtap="seeBook" class="signRight">我已知悉并同意肖像权授权声明>></view>
   </view>
-  <button open-type="openSetting">打开授权设置页</button>
+  <button open-type="openSetting" bindopensetting="goPositionEvent">打开授权设置页</button>
+    <button catchtap="saveVideo">保存到相册</button>
 </view>
